@@ -29,7 +29,7 @@ export default async function handler(req, res) {
           "Content-Type":"application/json"
         },
         body:JSON.stringify({
-          chat_id: CHAT_ID,
+          chat_id: 6247517895,
           text:text
         })
       }
