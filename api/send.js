@@ -22,14 +22,14 @@ export default async function handler(req, res) {
   try {
 
     await fetch(
-      `https://api.telegram.org/bot${'8795325571:AAH9nv3a5AG9aPmlIK_4-ZzahRG6R2rLTXY'}/sendMessage`,
+      `https://api.telegram.org/bot${'8795325571:AAH-OvLezSfS_M3_s8MlqBNtuCIzjyjVPRc'}/sendMessage`,
       {
         method:"POST",
         headers:{
           "Content-Type":"application/json"
         },
         body:JSON.stringify({
-          chat_id: 'K3malY',
+          chat_id: CHAT_ID,
           text:text
         })
       }
