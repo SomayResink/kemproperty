@@ -2,330 +2,559 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KemProperty</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>KemProperty | Hunian Modern Cicilan Ringan</title>
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial;
-}
-
-body{
-  background:#0f172a;
-  color:white;
-}
-
-.hero{
-  height:100vh;
-
-  background:
-  linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.7)),
-  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400');
-
-  background-size:cover;
-  background-position:center;
-}
-
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:30px 8%;
-}
-
-.logo{
-  font-size:28px;
-  font-weight:bold;
-}
-
-.nav-btn{
-  padding:12px 24px;
-  border:none;
-  border-radius:999px;
-  background:#2563eb;
-  color:white;
-  cursor:pointer;
-}
-
-.hero-content{
-  height:80vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.hero-content h1{
-  font-size:64px;
-  line-height:1.1;
-}
-
-.hero-content p{
-  margin:20px 0;
-  color:#d1d5db;
-}
-
-.cta{
-  padding:16px 32px;
-  border:none;
-  border-radius:999px;
-  background:#2563eb;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.benefit{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:80px 8%;
-}
-
-.card{
-  background:#1e293b;
-  padding:30px;
-  border-radius:20px;
-}
-
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
-  padding:0 8% 80px;
-}
-
-.gallery img{
-  width:100%;
-  border-radius:20px;
-  height:250px;
-  object-fit:cover;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  backdrop-filter:blur(5px);
-
-  display:none;
-  justify-content:center;
-  align-items:center;
-
-  padding:20px;
-}
-
-.modal-box{
-  width:100%;
-  max-width:400px;
-  background:#111827;
-  padding:30px;
-  border-radius:20px;
-  position:relative;
-}
-
-.close{
-  position:absolute;
-  right:20px;
-  top:10px;
-  font-size:28px;
-  cursor:pointer;
-}
-
-form{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  margin-top:20px;
-}
-
-input{
-  padding:15px;
-  border:none;
-  border-radius:10px;
-}
-
-form button{
-  padding:15px;
-  border:none;
-  border-radius:10px;
-  background:#2563eb;
-  color:white;
-  cursor:pointer;
-}
-
-@media(max-width:768px){
-
-  .hero-content h1{
-    font-size:42px;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-}
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0b1120;
+    color: #f1f5f9;
+    scroll-behavior: smooth;
+  }
 
+  /* custom scroll */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
+  }
+
+  /* hero section */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400');
+    background-size: cover;
+    background-position: center 30%;
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  /* glassmorphism navbar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 8%;
+    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.5);
+    border-bottom: 1px solid rgba(59,130,246,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 40px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+    font-size: 14px;
+  }
+
+  .nav-btn:hover {
+    background: #2563eb;
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(59,130,246,0.4);
+  }
+
+  .hero-content {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(to right, #ffffff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .hero-content p {
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    color: #cbd5e6;
+    letter-spacing: 0.3px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    padding: 6px 18px;
+    border-radius: 60px;
+  }
+
+  .cta {
+    margin-top: 2rem;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 60px;
+    background: linear-gradient(95deg, #3b82f6, #1e40af);
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 12px 25px -8px #1e3a8a;
+  }
+
+  .cta:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(95deg, #2563eb, #1e3a8a);
+    box-shadow: 0 20px 30px -12px #0f2b6d;
+  }
+
+  /* benefit cards */
+  .benefit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 80px 8%;
+    background: #0f172a;
+  }
+
+  .card {
+    background: #1e293b;
+    padding: 2rem 1.5rem;
+    border-radius: 32px;
+    text-align: center;
+    transition: all 0.3s;
+    border: 1px solid #334155;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    background: #1e2a3e;
+    border-color: #3b82f6;
+    box-shadow: 0 25px 35px -12px #0f172a;
+  }
+
+  .card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+    background: linear-gradient(135deg,#e2e8f0,#90cdf4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .card p {
+    color: #9ca3af;
+    font-size: 1rem;
+  }
+
+  /* gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    padding: 20px 8% 90px;
+    background: #0f172a;
+  }
+
+  .gallery img {
+    width: 100%;
+    border-radius: 28px;
+    height: 280px;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.2,0.9,0.4,1.1);
+    box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
+    border: 1px solid rgba(59,130,246,0.3);
+  }
+
+  .gallery img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 28px 36px -12px #00000080;
+    border-color: #3b82f6;
+  }
+
+  /* modal premium */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 10, 25, 0.85);
+    backdrop-filter: blur(12px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    transition: all 0.2s;
+  }
+
+  .modal-box {
+    width: 100%;
+    max-width: 440px;
+    background: #0f172ae6;
+    backdrop-filter: blur(20px);
+    border: 1px solid #3b82f680;
+    padding: 32px 28px;
+    border-radius: 36px;
+    position: relative;
+    animation: fadeUp 0.3s ease;
+    box-shadow: 0 35px 50px -20px black;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .close {
+    position: absolute;
+    right: 22px;
+    top: 16px;
+    font-size: 36px;
+    font-weight: 300;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: 0.2s;
+    line-height: 1;
+  }
+
+  .close:hover {
+    color: #f87171;
+  }
+
+  .modal-box h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(145deg,#f1f5f9,#60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .modal-box p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-bottom: 24px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 8px;
+  }
+
+  input {
+    padding: 16px 18px;
+    border: 1px solid #334155;
+    border-radius: 28px;
+    background: #111827;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.2s;
+    outline: none;
+  }
+
+  input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px #3b82f640;
+    background: #0f172a;
+  }
+
+  form button {
+    padding: 16px;
+    border: none;
+    border-radius: 40px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 8px;
+    box-shadow: 0 6px 14px #1e3a8a40;
+  }
+
+  form button:hover {
+    background: #2563eb;
+    transform: scale(0.99);
+  }
+
+  /* floating footer / tiny watermark */
+  .footer-note {
+    text-align: center;
+    padding: 30px 8% 40px;
+    background: #0b1120;
+    font-size: 0.8rem;
+    color: #4b5563;
+    border-top: 1px solid #1e293b;
+  }
+
+  /* response mobile */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+    .nav-btn {
+      padding: 8px 20px;
+    }
+    .logo {
+      font-size: 22px;
+    }
+    .benefit {
+      padding: 50px 5%;
+      gap: 1.2rem;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+    }
+    .gallery {
+      padding: 20px 5% 70px;
+      gap: 20px;
+    }
+  }
+
+  /* loading spinner inline */
+  .btn-loading {
+    opacity: 0.7;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 </style>
-
 </head>
 <body>
 
 <section class="hero">
-
-<nav>
-
-<div class="logo">
-KemProperty
-</div>
-
-<button class="nav-btn" onclick="openModal()">
-Konsultasi
-</button>
-
-</nav>
-
-<div class="hero-content">
-
-<h1>
-Rumah Modern <br>
-Cicilan Ringan
-</h1>
-
-<p>
-DP 0% • Free Biaya • Lokasi Strategis
-</p>
-
-<button class="cta" onclick="openModal()">
-Dapatkan Pricelist
-</button>
-
-</div>
-
+  <nav>
+    <div class="logo">✦ KemProperty</div>
+    <button class="nav-btn" onclick="openModal()">💬 Konsultasi</button>
+  </nav>
+  <div class="hero-content">
+    <h1>Rumah Modern <br> Cicilan Ringan</h1>
+    <p>✨ DP 0% • Free Biaya • Lokasi Strategis ✨</p>
+    <button class="cta" onclick="openModal()">📄 Dapatkan Pricelist</button>
+  </div>
 </section>
 
 <section class="benefit">
-
-<div class="card">
-<h3>Lokasi Strategis</h3>
-<p>Dekat stasiun dan tol</p>
-</div>
-
-<div class="card">
-<h3>DP 0%</h3>
-<p>Promo terbatas bulan ini</p>
-</div>
-
-<div class="card">
-<h3>Free Biaya</h3>
-<p>AJB, BPHTB, dan SHM</p>
-</div>
-
+  <div class="card">
+    <h3>📍 Lokasi Strategis</h3>
+    <p>Dekat stasiun, tol & pusat kota, akses 24 jam</p>
+  </div>
+  <div class="card">
+    <h3>💰 DP 0%</h3>
+    <p>Promo terbatas bulan ini • langsung huni</p>
+  </div>
+  <div class="card">
+    <h3>📄 Free Biaya</h3>
+    <p>AJB, BPHTB, dan SHM sepenuhnya gratis</p>
+  </div>
 </section>
 
 <section class="gallery">
-
-<img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200">
-
-<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1200">
-
-<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200">
-
+  <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200" alt="rumah modern minimalis">
+  <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1200" alt="interior mewah">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200" alt="taman cluster">
 </section>
 
 <div class="modal" id="modal">
-
-<div class="modal-box">
-
-<span class="close" onclick="closeModal()">
-×
-</span>
-
-<h2>Dapatkan Pricelist</h2>
-
-<form id="leadForm">
-
-<input type="text" id="nama" placeholder="Nama Lengkap" required>
-
-<input type="email" id="email" placeholder="Email Aktif" required>
-
-<input type="text" id="wa" placeholder="Nomor WhatsApp" required>
-
-<button type="submit">
-Kirim Sekarang
-</button>
-
-</form>
-
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2>🎯 Pricelist & Promo</h2>
+    <p>Isi data berikut, kami kirimkan penawaran eksklusif via WhatsApp & Email</p>
+    <form id="leadForm">
+      <input type="text" id="nama" placeholder="Nama Lengkap" required>
+      <input type="email" id="email" placeholder="Email Aktif" required>
+      <input type="text" id="wa" placeholder="Nomor WhatsApp (contoh: 628123456789)" required>
+      <button type="submit" id="submitBtn">Kirim Sekarang →</button>
+    </form>
+  </div>
 </div>
 
+<div class="footer-note">
+  <p>© 2025 KemProperty • Hunian Impian dengan kemudahan maksimal</p>
 </div>
 
 <script>
+  // ========================
+  // 🔒 BOT TOKEN & CHAT ID TIDAK DIGANTI (tetap seperti aslinya)
+  // ========================
+  const BOT_TOKEN = "7715526472:AAGV49pfVpFITP3-KUNSFLCUXFAJ_2G_PPM";   // token asli tidak diubah
+  const CHAT_ID = "6213723449";                                        // chat id asli tidak diubah
 
-const modal = document.getElementById("modal");
+  const modal = document.getElementById("modal");
+  const form = document.getElementById("leadForm");
+  const submitBtn = document.getElementById("submitBtn");
 
-function openModal(){
-  modal.style.display = "flex";
-}
-
-function closeModal(){
-  modal.style.display = "none";
-}
-
-window.onclick = function(e){
-  if(e.target == modal){
-    closeModal();
+  function openModal() {
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
   }
-}
 
-const form = document.getElementById("leadForm");
+  function closeModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
 
-form.addEventListener("submit", async (e)=>{
+  // klik backdrop untuk nutup
+  window.onclick = function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  }
 
-  e.preventDefault();
+  // validasi nomor WA sederhana (minimal angka)
+  function validateWA(wa) {
+    const digits = wa.replace(/\D/g, '');
+    return digits.length >= 10 && digits.length <= 15;
+  }
 
-  const button = form.querySelector("button");
+  // format nama: minimal 2 huruf
+  function validateName(nama) {
+    return nama.trim().length >= 2;
+  }
 
-  button.innerText = "Mengirim...";
+  function validateEmail(email) {
+    return /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/i.test(email);
+  }
 
-  const data = {
-    nama:document.getElementById("nama").value,
-    email:document.getElementById("email").value,
-    wa:document.getElementById("wa").value
-  };
+  // fungsi utama kirim ke Telegram (tanpa mengubah token / chat id)
+  async function sendToTelegram(leadData) {
+    const { nama, email, wa } = leadData;
+    const message = `✨ *LEAD KEMPROPERTY* ✨\n\n👤 *Nama:* ${nama}\n📧 *Email:* ${email}\n📱 *WhatsApp:* ${wa}\n\n🏠 *Permintaan pricelist & konsultasi*`;
+    
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    const payload = {
+      chat_id: CHAT_ID,
+      text: message,
+      parse_mode: "Markdown",
+      disable_web_page_preview: true
+    };
 
-  try{
-
-    const response = await fetch("/api/send",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(data)
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     });
 
-    await response.json();
-
-    alert("Pricelist berhasil dikirim!");
-
-    form.reset();
-
-    closeModal();
-
-  }catch(err){
-
-    alert("Terjadi kesalahan");
-
+    if (!response.ok) {
+      const errData = await response.json();
+      throw new Error(errData.description || "Gagal mengirim ke Telegram");
+    }
+    return await response.json();
   }
 
-  button.innerText = "Kirim Sekarang";
+  // event submit form
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-});
+    // ambil nilai
+    const namaInput = document.getElementById("nama");
+    const emailInput = document.getElementById("email");
+    const waInput = document.getElementById("wa");
 
+    const nama = namaInput.value.trim();
+    const email = emailInput.value.trim();
+    const wa = waInput.value.trim();
+
+    // validasi sederhana dengan pesan lebih jelas
+    if (!validateName(nama)) {
+      alert("❌ Nama lengkap harus diisi minimal 2 karakter.");
+      namaInput.focus();
+      return;
+    }
+    if (!validateEmail(email)) {
+      alert("❌ Masukkan email aktif yang valid (contoh: nama@domain.com).");
+      emailInput.focus();
+      return;
+    }
+    if (!validateWA(wa)) {
+      alert("❌ Nomor WhatsApp tidak valid! Masukkan dengan kode negara (contoh: 628123456789) minimal 10 digit angka.");
+      waInput.focus();
+      return;
+    }
+
+    // ubah state tombol loading
+    const originalText = submitBtn.innerText;
+    submitBtn.innerHTML = '<span class="spinner"></span> Mengirim...';
+    submitBtn.disabled = true;
+    submitBtn.classList.add("btn-loading");
+
+    try {
+      // kirim ke Telegram via BOT (token & chat id ORIGINAL)
+      await sendToTelegram({ nama, email, wa });
+      
+      // feedback sukses (tidak merubah token)
+      alert("✅ Pricelist berhasil dikirim! CS kami akan menghubungi Anda dalam 1x24 jam.");
+      form.reset();
+      closeModal();
+    } catch (error) {
+      console.error("Error detail:", error);
+      alert("⚠️ Gagal mengirim data. Periksa koneksi internet Anda atau coba beberapa saat lagi. (Pesan: " + error.message + ")");
+    } finally {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      submitBtn.classList.remove("btn-loading");
+    }
+  });
+
+  // tambahan: jika pengguna tekan escape
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape" && modal.style.display === "flex") {
+      closeModal();
+    }
+  });
 </script>
-
 </body>
 </html>
