@@ -1,560 +1,540 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>KemProperty | Hunian Modern Cicilan Ringan</title>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KemProperty - Listing Properti Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  body {
-    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: #0b1120;
-    color: #f1f5f9;
-    scroll-behavior: smooth;
-  }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7fc;
+            color: #0f172a;
+            line-height: 1.5;
+        }
 
-  /* custom scroll */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #1e293b;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-    border-radius: 10px;
-  }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-  /* hero section */
-  .hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400');
-    background-size: cover;
-    background-position: center 30%;
-    background-attachment: fixed;
-    position: relative;
-  }
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover { color: #2563eb; }
+        .btn-outline {
+            border: 1px solid #2563eb;
+            background: transparent;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #2563eb;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: #2563eb;
+            color: white;
+        }
 
-  /* glassmorphism navbar */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 8%;
-    backdrop-filter: blur(12px);
-    background: rgba(15, 23, 42, 0.5);
-    border-bottom: 1px solid rgba(59,130,246,0.3);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(120deg, #eef2ff 0%, #ffffff 100%);
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .hero-content { flex: 1; }
+        .hero-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 32px;
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 5px 15px rgba(37,99,235,0.3);
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .hero-image {
+            flex: 1;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-  .logo {
-    font-size: 28px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #fff, #60a5fa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.5px;
-  }
+        /* Section Title */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #0f172a;
+        }
 
-  .nav-btn {
-    padding: 12px 28px;
-    border: none;
-    border-radius: 40px;
-    background: #3b82f6;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(59,130,246,0.3);
-    font-size: 14px;
-  }
+        /* GRID CARD PROPERTI - SAMA KAYAK GALERI TAPI PAKAI CARD */
+        .properties {
+            padding: 70px 0;
+            background: white;
+        }
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+        }
+        .property-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #eef2ff;
+        }
+        .property-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+            border-color: #b9d0f8;
+        }
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+        .card-body {
+            padding: 20px 20px 24px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .specs {
+            display: flex;
+            gap: 18px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .specs span i {
+            width: 20px;
+            color: #2563eb;
+            margin-right: 6px;
+        }
+        .details {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 20px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+        .details p {
+            margin: 6px 0;
+        }
+        .price-tag {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 12px 0 8px;
+        }
+        .price-tag small {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .btn-card {
+            width: 100%;
+            background: #2563eb;
+            border: none;
+            padding: 12px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+        }
+        .btn-card:hover {
+            background: #1e40af;
+        }
 
-  .nav-btn:hover {
-    background: #2563eb;
-    transform: scale(1.02);
-    box-shadow: 0 8px 20px rgba(59,130,246,0.4);
-  }
+        /* Keunggulan */
+        .features {
+            background: #f8fafc;
+            padding: 70px 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            gap: 32px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 16px;
+        }
 
-  .hero-content {
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 1.5rem;
-  }
-
-  .hero-content h1 {
-    font-size: 3.8rem;
-    font-weight: 800;
-    line-height: 1.2;
-    background: linear-gradient(to right, #ffffff, #94a3b8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-
-  .hero-content p {
-    margin-top: 1.2rem;
-    font-size: 1.2rem;
-    color: #cbd5e6;
-    letter-spacing: 0.3px;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(4px);
-    padding: 6px 18px;
-    border-radius: 60px;
-  }
-
-  .cta {
-    margin-top: 2rem;
-    padding: 14px 36px;
-    border: none;
-    border-radius: 60px;
-    background: linear-gradient(95deg, #3b82f6, #1e40af);
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.25s;
-    box-shadow: 0 12px 25px -8px #1e3a8a;
-  }
-
-  .cta:hover {
-    transform: translateY(-4px);
-    background: linear-gradient(95deg, #2563eb, #1e3a8a);
-    box-shadow: 0 20px 30px -12px #0f2b6d;
-  }
-
-  /* benefit cards */
-  .benefit {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    padding: 80px 8%;
-    background: #0f172a;
-  }
-
-  .card {
-    background: #1e293b;
-    padding: 2rem 1.5rem;
-    border-radius: 32px;
-    text-align: center;
-    transition: all 0.3s;
-    border: 1px solid #334155;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
-  }
-
-  .card:hover {
-    transform: translateY(-10px);
-    background: #1e2a3e;
-    border-color: #3b82f6;
-    box-shadow: 0 25px 35px -12px #0f172a;
-  }
-
-  .card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
-    font-weight: 700;
-    background: linear-gradient(135deg,#e2e8f0,#90cdf4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .card p {
-    color: #9ca3af;
-    font-size: 1rem;
-  }
-
-  /* gallery */
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 28px;
-    padding: 20px 8% 90px;
-    background: #0f172a;
-  }
-
-  .gallery img {
-    width: 100%;
-    border-radius: 28px;
-    height: 280px;
-    object-fit: cover;
-    transition: all 0.4s cubic-bezier(0.2,0.9,0.4,1.1);
-    box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
-    border: 1px solid rgba(59,130,246,0.3);
-  }
-
-  .gallery img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 28px 36px -12px #00000080;
-    border-color: #3b82f6;
-  }
-
-  /* modal premium */
-  .modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(5, 10, 25, 0.85);
-    backdrop-filter: blur(12px);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: 20px;
-    transition: all 0.2s;
-  }
-
-  .modal-box {
-    width: 100%;
-    max-width: 440px;
-    background: #0f172ae6;
-    backdrop-filter: blur(20px);
-    border: 1px solid #3b82f680;
-    padding: 32px 28px;
-    border-radius: 36px;
-    position: relative;
-    animation: fadeUp 0.3s ease;
-    box-shadow: 0 35px 50px -20px black;
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .close {
-    position: absolute;
-    right: 22px;
-    top: 16px;
-    font-size: 36px;
-    font-weight: 300;
-    cursor: pointer;
-    color: #94a3b8;
-    transition: 0.2s;
-    line-height: 1;
-  }
-
-  .close:hover {
-    color: #f87171;
-  }
-
-  .modal-box h2 {
-    font-size: 1.9rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    background: linear-gradient(145deg,#f1f5f9,#60a5fa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .modal-box p {
-    font-size: 0.9rem;
-    color: #9ca3af;
-    margin-bottom: 24px;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-top: 8px;
-  }
-
-  input {
-    padding: 16px 18px;
-    border: 1px solid #334155;
-    border-radius: 28px;
-    background: #111827;
-    color: white;
-    font-size: 1rem;
-    transition: all 0.2s;
-    outline: none;
-  }
-
-  input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px #3b82f640;
-    background: #0f172a;
-  }
-
-  form button {
-    padding: 16px;
-    border: none;
-    border-radius: 40px;
-    background: #3b82f6;
-    color: white;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 8px;
-    box-shadow: 0 6px 14px #1e3a8a40;
-  }
-
-  form button:hover {
-    background: #2563eb;
-    transform: scale(0.99);
-  }
-
-  /* floating footer / tiny watermark */
-  .footer-note {
-    text-align: center;
-    padding: 30px 8% 40px;
-    background: #0b1120;
-    font-size: 0.8rem;
-    color: #4b5563;
-    border-top: 1px solid #1e293b;
-  }
-
-  /* response mobile */
-  @media (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 2.5rem;
-    }
-    .hero-content p {
-      font-size: 1rem;
-    }
-    .nav-btn {
-      padding: 8px 20px;
-    }
-    .logo {
-      font-size: 22px;
-    }
-    .benefit {
-      padding: 50px 5%;
-      gap: 1.2rem;
-    }
-    .card h3 {
-      font-size: 1.5rem;
-    }
-    .gallery {
-      padding: 20px 5% 70px;
-      gap: 20px;
-    }
-  }
-
-  /* loading spinner inline */
-  .btn-loading {
-    opacity: 0.7;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .spinner {
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top: 2px solid white;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    display: inline-block;
-  }
-  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-</style>
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 32px;
+            padding: 32px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            right: 24px;
+            top: 20px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 14px 18px;
+            margin: 12px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 60px;
+        }
+        .modal-content button {
+            width: 100%;
+            background: #2563eb;
+            border: none;
+            padding: 14px;
+            border-radius: 60px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px;
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<section class="hero">
-  <nav>
-    <div class="logo">✦ KemProperty</div>
-    <button class="nav-btn" onclick="openModal()">💬 Konsultasi</button>
-  </nav>
-  <div class="hero-content">
-    <h1>Rumah Modern <br> Cicilan Ringan</h1>
-    <p>✨ DP 0% • Free Biaya • Lokasi Strategis ✨</p>
-    <button class="cta" onclick="openModal()">📄 Dapatkan Pricelist</button>
-  </div>
-</section>
-
-<section class="benefit">
-  <div class="card">
-    <h3>📍 Lokasi Strategis</h3>
-    <p>Dekat stasiun, tol & pusat kota, akses 24 jam</p>
-  </div>
-  <div class="card">
-    <h3>💰 DP 0%</h3>
-    <p>Promo terbatas bulan ini • langsung huni</p>
-  </div>
-  <div class="card">
-    <h3>📄 Free Biaya</h3>
-    <p>AJB, BPHTB, dan SHM sepenuhnya gratis</p>
-  </div>
-</section>
-
-<section class="gallery">
-  <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200" alt="rumah modern minimalis">
-  <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1200" alt="interior mewah">
-  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200" alt="taman cluster">
-</section>
-
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <span class="close" onclick="closeModal()">×</span>
-    <h2>🎯 Pricelist & Promo</h2>
-    <p>Isi data berikut, kami kirimkan penawaran eksklusif via WhatsApp & Email</p>
-    <form id="leadForm">
-      <input type="text" id="nama" placeholder="Nama Lengkap" required>
-      <input type="email" id="email" placeholder="Email Aktif" required>
-      <input type="text" id="wa" placeholder="Nomor WhatsApp (contoh: 628123456789)" required>
-      <button type="submit" id="submitBtn">Kirim Sekarang →</button>
-    </form>
-  </div>
+<div class="navbar">
+    <div class="nav-container">
+        <div class="logo">KemProperty</div>
+        <div class="nav-links">
+            <a href="#">Beranda</a>
+            <a href="#">Properti</a>
+            <a href="#">Keunggulan</a>
+            <button class="btn-outline" onclick="openModal()">Hubungi Kami</button>
+        </div>
+    </div>
 </div>
 
-<div class="footer-note">
-  <p>© 2025 KemProperty • Hunian Impian dengan kemudahan maksimal</p>
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge">🏡 Hunian Modern + Cicilan Ringan</div>
+            <h1>Temukan Properti Impianmu</h1>
+            <p>Koleksi eksklusif dengan DP 0%, cicilan mulai 200rb, dan promo free angsuran.</p>
+            <button class="btn-primary" onclick="openModal()">Konsultasi Gratis →</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="hero property">
+        </div>
+    </div>
+</section>
+
+<!-- GALERI PROPERTI DALAM BENTUK CARD (kamar tidur 3, kamar mandi 3, LB/LT, cicilan) -->
+<section class="properties">
+    <div class="container">
+        <h2 class="section-title">✨ Listing Properti Unggulan</h2>
+        <div class="property-grid">
+            
+            <!-- Aiman Residence 9 -->
+            <div class="property-card">
+                <img class="card-img" src="images/aiman9.jpg" alt="Aiman Residence 9" onerror="this.src='https://placehold.co/600x400?text=Aiman+9'">
+                <div class="card-body">
+                    <div class="card-title">Aiman Residence 9</div>
+                    <div class="specs"><span><i class="fas fa-bed"></i> 3 KT</span><span><i class="fas fa-bath"></i> 3 KM</span></div>
+                    <div class="details"><p>📐 Luas Bangunan: 100 m²</p><p>📍 Luas Tanah: 65 m²</p></div>
+                    <div class="price-tag">Cicilan mulai <span style="color:#2563eb;">Rp200rb</span> <small>/bulan</small></div>
+                    <button class="btn-card" onclick="openModalWithProject('Aiman Residence 9')">Pilih Properti</button>
+                </div>
+            </div>
+
+            <!-- Aiman Residence 9D -->
+            <div class="property-card">
+                <img class="card-img" src="images/aiman9d.jpg" alt="Aiman Residence 9D" onerror="this.src='https://placehold.co/600x400?text=Aiman+9D'">
+                <div class="card-body">
+                    <div class="card-title">Aiman Residence 9D</div>
+                    <div class="specs"><span><i class="fas fa-bed"></i> 3 KT</span><span><i class="fas fa-bath"></i> 3 KM</span></div>
+                    <div class="details"><p>📐 LB: 100 m²</p><p>📍 LT: 75 m²</p></div>
+                    <div class="price-tag">Cicilan mulai <span style="color:#2563eb;">Rp2jt</span> <small>/bulan</small></div>
+                    <button class="btn-card" onclick="openModalWithProject('Aiman Residence 9D')">Pilih Properti</button>
+                </div>
+            </div>
+
+            <!-- Aiman Residence 2 -->
+            <div class="property-card">
+                <img class="card-img" src="images/aiman2.jpg" alt="Aiman Residence 2" onerror="this.src='https://placehold.co/600x400?text=Aiman+2'">
+                <div class="card-body">
+                    <div class="card-title">Aiman Residence 2</div>
+                    <div class="specs"><span><i class="fas fa-bed"></i> 3 KT</span><span><i class="fas fa-bath"></i> 3 KM</span></div>
+                    <div class="details"><p>📐 LB: 100 m²</p><p>📍 LT: 80 m²</p></div>
+                    <div class="price-tag">Cicilan mulai <span style="color:#2563eb;">Rp2jt</span> <small>/bulan</small></div>
+                    <button class="btn-card" onclick="openModalWithProject('Aiman Residence 2')">Pilih Properti</button>
+                </div>
+            </div>
+
+            <!-- Aiman Residence 4 (free angsuran 2 tahun)-->
+            <div class="property-card">
+                <img class="card-img" src="images/aiman4.jpg" alt="Aiman Residence 4" onerror="this.src='https://placehold.co/600x400?text=Aiman+4'">
+                <div class="card-body">
+                    <div class="card-title">Aiman Residence 4</div>
+                    <div class="specs"><span><i class="fas fa-bed"></i> 3 KT</span><span><i class="fas fa-bath"></i> 3 KM</span></div>
+                    <div class="details"><p>📐 LB: 90 m²</p><p>📍 LT: 61 m²</p></div>
+                    <div class="price-tag"><span style="color:#059669;">🎁 Free Angsuran 2 Tahun</span></div>
+                    <button class="btn-card" onclick="openModalWithProject('Aiman Residence 4 (Free Angsuran 2th)')">Pilih Properti</button>
+                </div>
+            </div>
+
+            <!-- Aiman Residence 3 -->
+            <div class="property-card">
+                <img class="card-img" src="images/aiman3.jpg" alt="Aiman Residence 3" onerror="this.src='https://placehold.co/600x400?text=Aiman+3'">
+                <div class="card-body">
+                    <div class="card-title">Aiman Residence 3</div>
+                    <div class="specs"><span><i class="fas fa-bed"></i> 3 KT</span><span><i class="fas fa-bath"></i> 3 KM</span></div>
+                    <div class="details"><p>📐 LB: 90 m²</p><p>📍 LT: 72 m²</p></div>
+                    <div class="price-tag">Cicilan mulai <span style="color:#2563eb;">Rp700rb</span> <small>/bulan</small></div>
+                    <button class="btn-card" onclick="openModalWithProject('Aiman Residence 3')">Pilih Properti</button>
+                </div>
+            </div>
+
+            <!-- Qonita BRI 1 Residence -->
+            <div class="property-card">
+                <img class="card-img" src="images/qonita1.jpg" alt="Qonita BRI 1" onerror="this.src='https://placehold.co/600x400?text=Qonita+BRI+1'">
+                <div class="card-body">
+                    <div class="card-title">Qonita BRI 1 Residence</div>
+                    <div class="specs"><span><i class="fas fa-bed"></i> 3 KT</span><span><i class="fas fa-bath"></i> 3 KM</span></div>
+                    <div class="details"><p>📐 LB: 80 m²</p><p>📍 LT: 75 m²</p></div>
+                    <div class="price-tag"><span style="color:#059669;">🎁 Free Angsuran 2 Tahun</span></div>
+                    <button class="btn-card" onclick="openModalWithProject('Qonita BRI 1 Residence (Free 2th)')">Pilih Properti</button>
+                </div>
+            </div>
+
+            <!-- Qonita BRI 4 Residence -->
+            <div class="property-card">
+                <img class="card-img" src="images/qonita4.jpg" alt="Qonita BRI 4" onerror="this.src='https://placehold.co/600x400?text=Qonita+BRI+4'">
+                <div class="card-body">
+                    <div class="card-title">Qonita BRI 4 Residence</div>
+                    <div class="specs"><span><i class="fas fa-bed"></i> 3 KT</span><span><i class="fas fa-bath"></i> 3 KM</span></div>
+                    <div class="details"><p>📐 LB: 100 m²</p><p>📍 LT: 75 m²</p></div>
+                    <div class="price-tag"><span style="color:#059669;">🎁 Free Angsuran 2 Tahun</span></div>
+                    <button class="btn-card" onclick="openModalWithProject('Qonita BRI 4 Residence (Free 2th)')">Pilih Properti</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Keunggulan -->
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Mengapa Memilih KemProperty?</h2>
+        <div class="features-grid">
+            <div><div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div><h3>DP 0%</h3><p>Program spesial hunian tanpa uang muka</p></div>
+            <div><div class="feature-icon"><i class="fas fa-file-signature"></i></div><h3>BOOKING FEE</h3><p>FREE BIAYA <SPAN>AJB, BPHTB, SHM, IMB, NOTARIS, ASURANSI JIWA&KEBAKARAN</SPAN></p></div>
+            <div><div class="feature-icon"><i class="fas fa-train"></i></div><h3>Lokasi Premium</h3><p>Dekat akses tol & stasiun</p></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 KemProperty • Solusi Properti Modern & Terpercaya</p>
+</footer>
+
+<!-- MODAL FORM TELEGRAM -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h3 style="margin-bottom: 10px;">📋 Konsultasi Properti</h3>
+        <p style="margin-bottom: 16px;">Tim kami akan hubungi Anda via WhatsApp</p>
+        <form id="telegramForm">
+            <input type="text" id="fullname" placeholder="Nama Lengkap" required>
+            <input type="email" id="emailuser" placeholder="Email Aktif" required>
+            <input type="text" id="phone" placeholder="Nomor WhatsApp" required>
+            <input type="hidden" id="projectName" value="">
+            <button type="submit" id="submitBtn">Kirim Sekarang</button>
+        </form>
+    </div>
 </div>
 
 <script>
-  // ========================
-  // 🔒 BOT TOKEN & CHAT ID TIDAK DIGANTI (tetap seperti aslinya)
-  // ========================
-  const BOT_TOKEN = "7715526472:AAGV49pfVpFITP3-KUNSFLCUXFAJ_2G_PPM";   // token asli tidak diubah
-  const CHAT_ID = "6213723449";                                        // chat id asli tidak diubah
+    // ======================== 🔧 GANTI TOKEN DAN CHAT ID DI SINI ========================
+    const BOT_TOKEN = "GANTI_DENGAN_TOKEN_BOT_ANDA";      // <-- GANTI
+    const CHAT_ID = "GANTI_DENGAN_CHAT_ID_ANDA";          // <-- GANTI
+    // ==================================================================================
 
-  const modal = document.getElementById("modal");
-  const form = document.getElementById("leadForm");
-  const submitBtn = document.getElementById("submitBtn");
+    const modal = document.getElementById('modal');
+    const formTele = document.getElementById('telegramForm');
+    let selectedProject = "";
 
-  function openModal() {
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeModal() {
-    modal.style.display = "none";
-    document.body.style.overflow = "auto";
-  }
-
-  // klik backdrop untuk nutup
-  window.onclick = function(e) {
-    if (e.target === modal) {
-      closeModal();
+    function openModalWithProject(project) {
+        selectedProject = project;
+        document.getElementById('projectName').value = project;
+        modal.style.display = 'flex';
     }
-  }
 
-  // validasi nomor WA sederhana (minimal angka)
-  function validateWA(wa) {
-    const digits = wa.replace(/\D/g, '');
-    return digits.length >= 10 && digits.length <= 15;
-  }
+    function openModal() {
+        selectedProject = "Tidak disebutkan";
+        document.getElementById('projectName').value = "Tidak disebutkan";
+        modal.style.display = 'flex';
+    }
 
-  // format nama: minimal 2 huruf
-  function validateName(nama) {
-    return nama.trim().length >= 2;
-  }
+    function closeModal() {
+        modal.style.display = 'none';
+    }
 
-  function validateEmail(email) {
-    return /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/i.test(email);
-  }
-
-  // fungsi utama kirim ke Telegram (tanpa mengubah token / chat id)
-  async function sendToTelegram(leadData) {
-    const { nama, email, wa } = leadData;
-    const message = `✨ *LEAD KEMPROPERTY* ✨\n\n👤 *Nama:* ${nama}\n📧 *Email:* ${email}\n📱 *WhatsApp:* ${wa}\n\n🏠 *Permintaan pricelist & konsultasi*`;
-    
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    const payload = {
-      chat_id: CHAT_ID,
-      text: message,
-      parse_mode: "Markdown",
-      disable_web_page_preview: true
+    window.onclick = function(e) {
+        if (e.target === modal) closeModal();
     };
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+    formTele.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nama = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('emailuser').value.trim();
+        const wa = document.getElementById('phone').value.trim();
+        const proyek = document.getElementById('projectName').value;
+
+        if (!nama || !email || !wa) {
+            alert("Harap isi semua data!");
+            return;
+        }
+
+        const btn = document.getElementById('submitBtn');
+        const original = btn.innerText;
+        btn.innerText = "Mengirim...";
+        btn.disabled = true;
+
+        const pesan = `🏡 *LEAD PROPERTI - KemProperty* 🏡\n\n👤 *Nama:* ${nama}\n📧 *Email:* ${email}\n📱 *WhatsApp:* ${wa}\n🏠 *Proyek:* ${proyek}\n\n✅ Tertarik dengan unit properti. Mohon dihubungi.`;
+
+        const url = `https://api.telegram.org/bot${'8795325571:AAH-OvLezSfS_M3_s8MlqBNtuCIzjyjVPRc'}/sendMessage`;
+
+        try {
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: 6247517895,
+                    text: pesan,
+                    parse_mode: 'Markdown'
+                })
+            });
+            if (res.ok) {
+                alert("✅ Permintaan konsultasi terkirim! CS kami akan segera merespon.");
+                formTele.reset();
+                closeModal();
+            } else {
+                const err = await res.json();
+                alert("❌ Gagal: " + (err.description || "Cek token / chat id"));
+            }
+        } catch (error) {
+            alert("⚠️ Gagal mengirim data. Cek koneksi internet.");
+            console.error(error);
+        } finally {
+            btn.innerText = original;
+            btn.disabled = false;
+        }
     });
-
-    if (!response.ok) {
-      const errData = await response.json();
-      throw new Error(errData.description || "Gagal mengirim ke Telegram");
-    }
-    return await response.json();
-  }
-
-  // event submit form
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    // ambil nilai
-    const namaInput = document.getElementById("nama");
-    const emailInput = document.getElementById("email");
-    const waInput = document.getElementById("wa");
-
-    const nama = namaInput.value.trim();
-    const email = emailInput.value.trim();
-    const wa = waInput.value.trim();
-
-    // validasi sederhana dengan pesan lebih jelas
-    if (!validateName(nama)) {
-      alert("❌ Nama lengkap harus diisi minimal 2 karakter.");
-      namaInput.focus();
-      return;
-    }
-    if (!validateEmail(email)) {
-      alert("❌ Masukkan email aktif yang valid (contoh: nama@domain.com).");
-      emailInput.focus();
-      return;
-    }
-    if (!validateWA(wa)) {
-      alert("❌ Nomor WhatsApp tidak valid! Masukkan dengan kode negara (contoh: 628123456789) minimal 10 digit angka.");
-      waInput.focus();
-      return;
-    }
-
-    // ubah state tombol loading
-    const originalText = submitBtn.innerText;
-    submitBtn.innerHTML = '<span class="spinner"></span> Mengirim...';
-    submitBtn.disabled = true;
-    submitBtn.classList.add("btn-loading");
-
-    try {
-      // kirim ke Telegram via BOT (token & chat id ORIGINAL)
-      await sendToTelegram({ nama, email, wa });
-      
-      // feedback sukses (tidak merubah token)
-      alert("✅ Pricelist berhasil dikirim! CS kami akan menghubungi Anda dalam 1x24 jam.");
-      form.reset();
-      closeModal();
-    } catch (error) {
-      console.error("Error detail:", error);
-      alert("⚠️ Gagal mengirim data. Periksa koneksi internet Anda atau coba beberapa saat lagi. (Pesan: " + error.message + ")");
-    } finally {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      submitBtn.classList.remove("btn-loading");
-    }
-  });
-
-  // tambahan: jika pengguna tekan escape
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape" && modal.style.display === "flex") {
-      closeModal();
-    }
-  });
 </script>
 </body>
 </html>
