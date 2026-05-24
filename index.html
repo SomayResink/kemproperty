@@ -1,35 +1,331 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KemProperty</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<title>KemProperty</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
+  background:#0f172a;
+  color:white;
+}
+
+.hero{
+  height:100vh;
+
+  background:
+  linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.7)),
+  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400');
+
+  background-size:cover;
+  background-position:center;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:30px 8%;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
+
+.nav-btn{
+  padding:12px 24px;
+  border:none;
+  border-radius:999px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+.hero-content{
+  height:80vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero-content h1{
+  font-size:64px;
+  line-height:1.1;
+}
+
+.hero-content p{
+  margin:20px 0;
+  color:#d1d5db;
+}
+
+.cta{
+  padding:16px 32px;
+  border:none;
+  border-radius:999px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.benefit{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:80px 8%;
+}
+
+.card{
+  background:#1e293b;
+  padding:30px;
+  border-radius:20px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+  padding:0 8% 80px;
+}
+
+.gallery img{
+  width:100%;
+  border-radius:20px;
+  height:250px;
+  object-fit:cover;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(5px);
+
+  display:none;
+  justify-content:center;
+  align-items:center;
+
+  padding:20px;
+}
+
+.modal-box{
+  width:100%;
+  max-width:400px;
+  background:#111827;
+  padding:30px;
+  border-radius:20px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:20px;
+  top:10px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-top:20px;
+}
+
+input{
+  padding:15px;
+  border:none;
+  border-radius:10px;
+}
+
+form button{
+  padding:15px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+}
+
+</style>
+
 </head>
 <body>
 
-  <section class="hero">
-    <div class="overlay">
+<section class="hero">
 
-      <h1>Rumah Impian Cicilan Ringan</h1>
-      <p>DP 0% • Free Biaya • Lokasi Strategis</p>
+<nav>
 
-      <form id="leadForm">
-        <input type="text" id="nama" placeholder="Nama Lengkap" required>
+<div class="logo">
+KemProperty
+</div>
 
-        <input type="email" id="email" placeholder="Email Aktif" required>
+<button class="nav-btn" onclick="openModal()">
+Konsultasi
+</button>
 
-        <input type="text" id="wa" placeholder="Nomor WhatsApp" required>
+</nav>
 
-        <button type="submit">
-          Konsultasi Gratis
-        </button>
-      </form>
+<div class="hero-content">
 
-    </div>
-  </section>
+<h1>
+Rumah Modern <br>
+Cicilan Ringan
+</h1>
 
-  <script src="script.js"></script>
+<p>
+DP 0% • Free Biaya • Lokasi Strategis
+</p>
+
+<button class="cta" onclick="openModal()">
+Dapatkan Pricelist
+</button>
+
+</div>
+
+</section>
+
+<section class="benefit">
+
+<div class="card">
+<h3>Lokasi Strategis</h3>
+<p>Dekat stasiun dan tol</p>
+</div>
+
+<div class="card">
+<h3>DP 0%</h3>
+<p>Promo terbatas bulan ini</p>
+</div>
+
+<div class="card">
+<h3>Free Biaya</h3>
+<p>AJB, BPHTB, dan SHM</p>
+</div>
+
+</section>
+
+<section class="gallery">
+
+<img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200">
+
+<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1200">
+
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200">
+
+</section>
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<span class="close" onclick="closeModal()">
+×
+</span>
+
+<h2>Dapatkan Pricelist</h2>
+
+<form id="leadForm">
+
+<input type="text" id="nama" placeholder="Nama Lengkap" required>
+
+<input type="email" id="email" placeholder="Email Aktif" required>
+
+<input type="text" id="wa" placeholder="Nomor WhatsApp" required>
+
+<button type="submit">
+Kirim Sekarang
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+const modal = document.getElementById("modal");
+
+function openModal(){
+  modal.style.display = "flex";
+}
+
+function closeModal(){
+  modal.style.display = "none";
+}
+
+window.onclick = function(e){
+  if(e.target == modal){
+    closeModal();
+  }
+}
+
+const form = document.getElementById("leadForm");
+
+form.addEventListener("submit", async (e)=>{
+
+  e.preventDefault();
+
+  const button = form.querySelector("button");
+
+  button.innerText = "Mengirim...";
+
+  const data = {
+    nama:document.getElementById("nama").value,
+    email:document.getElementById("email").value,
+    wa:document.getElementById("wa").value
+  };
+
+  try{
+
+    const response = await fetch("/api/send",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(data)
+    });
+
+    await response.json();
+
+    alert("Pricelist berhasil dikirim!");
+
+    form.reset();
+
+    closeModal();
+
+  }catch(err){
+
+    alert("Terjadi kesalahan");
+
+  }
+
+  button.innerText = "Kirim Sekarang";
+
+});
+
+</script>
+
 </body>
 </html>
