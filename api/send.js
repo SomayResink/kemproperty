@@ -1,39 +1,49 @@
-const form = document.getElementById("leadForm");
+export default async function handler(req, res) {
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  const BOT_TOKEN = process.env.BOT_TOKEN;
+  const CHAT_ID = process.env.CHAT_ID;
 
-  const button = form.querySelector("button");
+  if(req.method !== "POST"){
+    return res.status(405).json({
+      message:"Method not allowed"
+    });
+  }
 
-  button.innerText = "Mengirim...";
+  const { nama, email, wa } = req.body;
 
-  const data = {
-    nama: document.getElementById("nama").value,
-    email: document.getElementById("email").value,
-    wa: document.getElementById("wa").value,
-  };
+  const text = `
+🏠 LEADS BARU
+
+👤 Nama: ${nama}
+📧 Email: ${email}
+📱 WA: ${wa}
+`;
 
   try {
 
-    const response = await fetch("/api/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    await fetch(
+      `https://api.telegram.org/bot${'8795325571:AAH9nv3a5AG9aPmlIK_4-ZzahRG6R2rLTXY'}/sendMessage`,
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          chat_id: 'K3malY',
+          text:text
+        })
+      }
+    );
+
+    return res.status(200).json({
+      message:"Berhasil dikirim"
     });
 
-    const result = await response.json();
+  } catch(err){
 
-    alert(result.message);
-
-    form.reset();
-
-  } catch (error) {
-
-    alert("Terjadi kesalahan");
+    return res.status(500).json({
+      message:"Error server"
+    });
 
   }
-
-  button.innerText = "Konsultasi Gratis";
-});
+}
